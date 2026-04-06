@@ -26,7 +26,7 @@ st.plotly_chart(fig, use_container_width=True)
 dwell_query = """
 SELECT
     origin_hub,
-    ROUND(AVG(COALESCE(dwell_hub_hours, 0)), 2) AS avg_dwell_hub_hours,
+    ROUND(AVG(COALESCE(dwell_hub_hours, 0)::numeric), 2) AS avg_dwell_hub_hours,
     COUNT(*) AS shipments
 FROM shipment_master
 GROUP BY 1
