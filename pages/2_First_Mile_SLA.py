@@ -8,9 +8,9 @@ query = """
 SELECT
     origin_station,
     COUNT(*) AS total_shipments,
-    ROUND(100.0 * AVG(COALESCE(pickup_on_time_flag, 0)), 2) AS pickup_ontime_pct,
-    ROUND(AVG(COALESCE(first_scan_timeliness_min, 0)), 2) AS avg_first_scan_min,
-    ROUND(100.0 * AVG(COALESCE(failed_pickup_flag, 0)), 2) AS failed_pickup_pct
+    ROUND(100 * AVG(COALESCE(pickup_on_time_flag, 0)::numeric), 2) AS pickup_ontime_pct,
+    ROUND(AVG(COALESCE(first_scan_timeliness_min, 0)::numeric), 2) AS avg_first_scan_min,
+    ROUND(100 * AVG(COALESCE(failed_pickup_flag, 0)::numeric), 2) AS failed_pickup_pct
 FROM shipment_master
 GROUP BY 1
 ORDER BY pickup_ontime_pct ASC
