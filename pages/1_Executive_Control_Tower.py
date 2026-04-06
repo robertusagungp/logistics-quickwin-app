@@ -46,8 +46,8 @@ station_query = """
 SELECT
     origin_station,
     COUNT(*) AS shipments,
-    ROUND(AVG(COALESCE(dwell_hub_hours, 0)), 2) AS avg_dwell_hub_hours,
-    ROUND(100.0 * AVG(COALESCE(pickup_on_time_flag, 0)), 2) AS pickup_ontime_pct
+    ROUND(AVG(COALESCE(dwell_hub_hours, 0)::numeric), 2) AS avg_dwell_hub_hours,
+    ROUND(100 * AVG(COALESCE(pickup_on_time_flag, 0)::numeric), 2) AS pickup_ontime_pct
 FROM shipment_master
 GROUP BY 1
 ORDER BY shipments DESC
