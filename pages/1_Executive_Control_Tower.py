@@ -1,6 +1,6 @@
 import streamlit as st
 import plotly.express as px
-from pages.common import run_query
+from common import run_query
 
 st.title("Executive Control Tower")
 
